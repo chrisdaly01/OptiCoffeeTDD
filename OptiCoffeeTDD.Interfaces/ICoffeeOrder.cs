@@ -8,7 +8,6 @@ namespace OptiCoffeeTDD.Interfaces
     {
         public int Length { get; }
         public decimal MoneyAdded { get; }
-        public void AddMoney(decimal amount); 
         public ICoffee CurrentWorkingCoffee { get; }
         public IEnumerable<ICoffee> FinalizedCoffees { get; }
 
@@ -21,5 +20,6 @@ namespace OptiCoffeeTDD.Interfaces
         public void SetCurrentWorkingCoffeeSugars(int sugars);
 
         public void SetCurrentWorkingCoffeeCreams(int creams);
+        public void AddMoney(decimal amount); 
     }
 }

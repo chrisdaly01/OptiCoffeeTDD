@@ -10,11 +10,14 @@ namespace OptiCoffeeTDD.DomainModels
 {
     public class CoffeeMachineCommandProvider : ICoffeeMachineCommandProvider
     {
-        public IDictionary<Enums.CoffeeMachineOperations, ICommand> commands { get; }
+        private IDictionary<Enums.CoffeeMachineOperations, ICommand> commands;
 
-        public CoffeeMachineCommandProvider(IDictionary<Enums.CoffeeMachineOperations, ICommand> commands)
+        public CoffeeMachineCommandProvider()
         {
-            commands = this.commands;
+            // Adding this type to DI was causing a circular reference for me
+            // But don't have time to chase that down just now
+            commands = new Dictionary<Enums.CoffeeMachineOperations, ICommand>();
+            InitializeCommands();
         }
 
         public ICommand GetCommand(Enums.CoffeeMachineOperations operation)
@@ -25,6 +28,10 @@ namespace OptiCoffeeTDD.DomainModels
 
         private void InitializeCommands()
         {
+            // Ambivalent about newing these commands up here.
+            // On the one hand I feel like I should be using DI
+            // and on the other hand they're so closely linked
+            // they'll never be in a separate repo
             ICommand acceptCommand = new AcceptCurrentWorkingCoffeeCommand();
             ICommand addMoneyCommand = new AddMoneyCommand();
             ICommand showOrderCommand = new ShowOrderCommand();
@@ -55,7 +62,7 @@ namespace OptiCoffeeTDD.DomainModels
             commands.Add(DECREMENT_CREAM, decrementCreamCommand);
             commands.Add(DECREMENT_SUGAR, decrementSugarCommand);
             commands.Add(SHOW_CURRENT_WORKING_COFFEE, showCurrentWorkingCoffee);
-            commands.Add(Enums.CoffeeMachineOperations.DISPENSE_ORDER_AND_CHANGE, completeTransactionCommand);
+            commands.Add(DISPENSE_ORDER_AND_CHANGE, completeTransactionCommand);
         }
     }
 }

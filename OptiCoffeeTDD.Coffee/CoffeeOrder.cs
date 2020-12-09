@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OptiCoffeeTDD.DomainModels.Exceptions;
 using OptiCoffeeTDD.EnumsAndConstants;
 using OptiCoffeeTDD.Interfaces;
 using OptiCoffeeTDD.Interfaces.CrossCutting;
@@ -14,7 +16,7 @@ namespace OptiCoffeeTDD.DomainModels
 
         public int Length => FinalizedCoffees.Count();
         public ICoffee CurrentWorkingCoffee { get; private set; } = null;
-        public IEnumerable<ICoffee> FinalizedCoffees { get; private set; } = new List<ICoffee>();
+        public IEnumerable<ICoffee> FinalizedCoffees { get; private set; }
         public decimal MoneyAdded { get; private set; }
 
         public CoffeeOrder(IEnumerable<ICoffee> finalizedCoffees, ICoffeeMachineLogger consoleLogger)
@@ -25,16 +27,28 @@ namespace OptiCoffeeTDD.DomainModels
         // Transaction-based methods
         public string CompleteTransaction()
         {
-            StringBuilder sb = new StringBuilder();
+            // This validation calls for some refactoring
+            decimal change = MoneyAdded - GetTotalPrice();
+
+            if (!FinalizedCoffees.ToList().Any())
+            {
+                throw new TransactionCompletedWithoutOrdersException("A transaction cannot be completed because there are currently no coffees ordered.");
+            }
+            if (change < 0)
+            {
+                throw new InvalidMoneyException($"You have not provided sufficient money to cover the cost of the order.  Please add {change}.");
+            }
+
             // Not sure why but couldn't get FinalizedCoffees.ToList().Clear() to work
             // Do want to get rid of this initialization here
             FinalizedCoffees = new List<ICoffee>();
-            return $"Thank you for your patronage.  Your change is: {MoneyAdded - GetTotalPrice()}";
+
+            return $"Thank you for your patronage.  Your change is: {change}";
         }
 
         public void AddMoney(decimal amount)
         {
-            if (((amount * 100 % 5) != 0) && (amount + MoneyAdded > 20))
+            if (((amount * 100 % 5) != 0) || (amount + MoneyAdded > 20))
             {
                 throw new InvalidMoneyException($"Money must be added in .05 cent increments and may not exceed $20.00");
             }

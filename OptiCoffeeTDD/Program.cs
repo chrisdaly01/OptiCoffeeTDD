@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using OptiCoffeeTDD.DomainModels;
 using OptiCoffeeTDD.Interfaces;
 
 namespace OptiCoffeeTDD.App

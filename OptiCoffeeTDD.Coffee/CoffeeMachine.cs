@@ -18,16 +18,15 @@ namespace OptiCoffeeTDD.DomainModels
         private ICoffeeMachineController controller;
         private ICoffeeMachineLogger logger;
         private IOutputHandler outputHandler;
-        private CoffeeMachineCommandProvider commands;
+        private ICoffeeMachineCommandProvider commands;
 
-        public CoffeeMachine(ICoffeeMachineController controller, ICoffeeMachineLogger logger,
+        public CoffeeMachine(ICoffeeMachineCommandProvider commands, ICoffeeMachineController controller, ICoffeeMachineLogger logger,
             IOutputHandler outputHandler)
         {
             this.controller = controller;
             this.logger = logger;
             this.outputHandler = outputHandler;
-
-            this.commands = new CoffeeMachineCommandProvider();
+            this.commands = commands;
         }
 
         private string ShowOptionsMenuToCustomer()

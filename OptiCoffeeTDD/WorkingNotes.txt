@@ -55,3 +55,23 @@ and select options.  Broke with that pattern with adding money only.
 
 Would have liked to implement a couple different machine interfaces.  Sort of a silly idea that occured to me
 was a CLI coffee machine, plus some more standard ones, like an API or MVC web app.
+
+Missing things:
+
+Just realized now that the proper interpretation of standard monetary increments from .05 - 20.00 probably
+meant an exhaustive list of (5, 10, 25, 50, 1.00, 2.00, 5.00, 10.00, 20.00).  I've currently implemented it
+as providing an amount that is validated for being a factor of 5 (after being multiplied by 100) and 
+that the total money (already present + new) is < 20.
+
+I'm not satisfied with the testing.  There's a good structure there but more and better tests are required.
+
+There are some places where I'm still newing objects up instead of using DI.  There are a few different reasons.
+In one case, I ran into a circular dependency and haven't yet had the time to untangle it.  
+
+Validation is basically present but requires polishing in communication and refactoring.  Custom exceptions have been
+implemented but are just shells over the base Exception.
+
+There is no proper formatting as of yet.
+
+The beefy domain models project is both misnamed (wasn't at first) and has too much going on.  Could benefit from some reorg.
+

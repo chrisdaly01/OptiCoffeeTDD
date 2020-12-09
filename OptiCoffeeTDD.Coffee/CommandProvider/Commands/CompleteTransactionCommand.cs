@@ -12,10 +12,12 @@ namespace OptiCoffeeTDD.DomainModels.CommandProvider.Commands
     {
         public ICoffeeMachineCommandResponse Execute(ICoffeeOrder order)
         {
+            string receipt = order.ToString();
+
             StringBuilder sb = new StringBuilder();
             sb.Append(order.CompleteTransaction());
             sb.Append("\r\n\r\nYour order appears below:\r\n\r\n");
-            sb.Append(order.ToString());
+            sb.Append(receipt);
             return new CoffeeMachineCommandResponse(sb.ToString());
         }
     }
@@ -84,7 +86,7 @@ namespace OptiCoffeeTDD.DomainModels.CommandProvider.Commands
         {
             int creams = order.CurrentWorkingCoffee?.Creams ?? 0;
 
-            order.SetCurrentWorkingCoffeeCreams(++creams);
+            order.SetCurrentWorkingCoffeeCreams(creams + 1);
             return new CoffeeMachineCommandResponse($"Creams increased by 1 to {order.CurrentWorkingCoffee.Creams}.");
         }
     }
@@ -94,7 +96,7 @@ namespace OptiCoffeeTDD.DomainModels.CommandProvider.Commands
         {
             int sugars = order.CurrentWorkingCoffee?.Sugars ?? 1;
 
-            order.SetCurrentWorkingCoffeeSugars(sugars);
+            order.SetCurrentWorkingCoffeeSugars(sugars + 1);
             return new CoffeeMachineCommandResponse($"Sugars increased by 1 to {order.CurrentWorkingCoffee.Sugars}.");
         }
     }
@@ -170,7 +172,7 @@ namespace OptiCoffeeTDD.DomainModels.CommandProvider.Commands
     {
         public ICoffeeMachineCommandResponse Execute(ICoffeeOrder order)
         {
-            return new CoffeeMachineCommandResponse(order.CurrentWorkingCoffee.ToString());
+            return new CoffeeMachineCommandResponse(order.CurrentWorkingCoffee?.ToString() ?? "No working order");
         }
     }
 

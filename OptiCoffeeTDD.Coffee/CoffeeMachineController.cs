@@ -1,4 +1,5 @@
-﻿using OptiCoffeeTDD.Interfaces;
+﻿using System;
+using OptiCoffeeTDD.Interfaces;
 
 namespace OptiCoffeeTDD.DomainModels
 {
@@ -24,7 +25,25 @@ namespace OptiCoffeeTDD.DomainModels
             Commands = commands;
         }
 
-        public ICoffeeMachineCommandResponse ExecuteCommand(ICommand command) => command.Execute(Orders);
+        public ICoffeeMachineCommandResponse ExecuteCommand(ICommand command)
+        {
+            try
+            {
+                return command.Execute(Orders);
+            }
+            catch (InvalidMoneyException ex)
+            {
+                return new CoffeeMachineCommandResponse(ex.Message);
+            }
+            catch (CondimentQuantityException ex)
+            {
+                return new CoffeeMachineCommandResponse(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return new CoffeeMachineCommandResponse(ex.Message);
+            }
+        }
     }
 
 

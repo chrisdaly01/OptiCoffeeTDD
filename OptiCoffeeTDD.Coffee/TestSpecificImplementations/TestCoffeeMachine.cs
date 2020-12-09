@@ -13,6 +13,13 @@ namespace OptiCoffeeTDD.DomainModels.TestSpecificImplementations
     {
         public ICoffeeMachineController controller { get; set; }
 
-        public TestCoffeeMachine(ICoffeeMachineController controller, ICoffeeMachineLogger logger, IOutputHandler outputHandler) : base(controller, logger, outputHandler) => this.controller = controller;
+        public TestCoffeeMachine(ICoffeeMachineCommandProvider commands,
+            ICoffeeMachineController controller,
+            ICoffeeMachineLogger logger,
+            IOutputHandler outputHandler) : base(commands,
+            controller,
+            logger,
+            outputHandler) =>
+            this.controller = controller;
     }
 }
