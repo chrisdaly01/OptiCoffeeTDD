@@ -64,6 +64,7 @@ as providing an amount that is validated for being a factor of 5 (after being mu
 that the total money (already present + new) is < 20.
 
 I'm not satisfied with the testing.  There's a good structure there but more and better tests are required.
+Particularly on the ICommand implementations.  They're well-suited for testing, I just haven't gotten there yet.
 
 There are some places where I'm still newing objects up instead of using DI.  There are a few different reasons.
 In one case, I ran into a circular dependency and haven't yet had the time to untangle it.  
