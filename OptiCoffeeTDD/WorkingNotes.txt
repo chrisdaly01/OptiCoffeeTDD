@@ -1,0 +1,57 @@
+﻿Basic Guiding Principles
+
+First, and foremost, I tried to keep in mind the nature of this application, which is to serve as an example.
+As an example, it should illustrate features that should be present in a professional project, but
+also, not approach the level of effort required for an actual professional project.
+
+To that end, I've made use of .NET core's DI and also the xUnit testing library.  I did my best
+to use sound OOP practices, but there were some places where, in the interest of time, I 'just made it work'.
+Similarly, I focused on unit tests, rather than integration between the different classes.  Actual work
+is confined pretty much to the ICommand implementations and the CoffeeOrder.
+
+The ICoffeeMachine represents the contract for the input element for the entire coffee machine system.
+Ideally, it will handle all input and output, dispatch instructions to the coffee machine controller.
+It will interpret the state and any error messages of the Coffeemachine controller and show that information
+in a way appropriate to its implementation.
+
+
+	CoffeeMachine will thus handleInput, mapInputToCommand, sendCommandToController.  Should not
+	need action specific methods like it started with.
+
+The ICoffeeMachineController will receive and execute instructions from the CoffeeMachine.  It should 
+be self sufficient for performing all instructions - i.e, each one is self-contained: if it requires
+an argument, it's part of the message.
+
+ICoffeeMachineState - started with this as a central element, but ultimately removed it.
+	State is certainly an important aspect (as usual), but the options available to you don't
+	really vary by state.  For instance, you might think adding a cream couldn't be the first
+	thing you do, but why not?  Obviously, that's not a valid order, but there's no need
+	to validate the order until it's added to the list of finalized coffee orders.  Really, there's
+	no reason to limit the capabilities of the controller if, for example, the user interface
+	of the CoffeeMachine requires submenus.  It would be the job of the machine to present the correct
+	options. 
+
+ICommand - this represents the basic communication packet of the coffee machine system -
+The instruction packet.  It should contain everything necessary to process the instruction.  CoffeeMachineController
+will invoke the command execution, along with a copy of the current order for context.
+
+(Have been thinking about chaining commands, but that'd be overkill here)
+
+ICoffeeMachineCommandResponse - response object returned to command sender.  Will contain any pertinent
+info for the CoffeeMachine to use for user information display, as well as any error messages.
+
+There is no unsolicited communication from the controller to the machine.
+
+The ICoffeeOrder and ICoffee interfaces represent all the functionality for understanding a coffee order.
+It will be able to tell you about itself and perform operations against the underlying order,
+like finalize coffees, accept money, dispense orders and change, etc.
+
+Also a couple custom Exception classes that just hold a message.
+
+I had initially thought I would quickly whip up a few clients (coffeeMachines) to show differen ways of interacting with 
+the controller.  The one that's currently implemented was imagined as literaly having a one button interaction for
+everything.  Even though the coffee machine supports setting cream/sugar/size directly, the client only exposes increment
+and select options.  Broke with that pattern with adding money only.
+
+Would have liked to implement a couple different machine interfaces.  Sort of a silly idea that occured to me
+was a CLI coffee machine, plus some more standard ones, like an API or MVC web app.

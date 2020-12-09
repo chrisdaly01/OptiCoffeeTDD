@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30709.64
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptiCoffeeTDD.App", "OptiCoffeeTDD\OptiCoffeeTDD.App.csproj", "{7A03B5C3-B84A-4DA2-95C5-29D634D859D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptiCoffeeTDD.Tests", "OptiCoffeeTDD.Tests\OptiCoffeeTDD.Tests.csproj", "{D1FEB7C3-C89B-44D2-8AC0-5ACE94BDCD78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptiCoffeeTDD.DomainModels", "OptiCoffeeTDD.Coffee\OptiCoffeeTDD.DomainModels.csproj", "{7EB65036-8B43-4BC7-B686-7E794D63F435}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptiCoffeeTDD.DIConfig", "OptiCoffeeTDD.DIConfig\OptiCoffeeTDD.DIConfig.csproj", "{BDE19CA8-01D6-4B37-9437-7D2F4EF03988}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptiCoffeeTDD.Interfaces", "OptiCoffeeTDD.Interfaces\OptiCoffeeTDD.Interfaces.csproj", "{B5B99CCC-F7F6-4DC2-97D9-D8EE2B5945C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptiCoffeeTDD.EnumsAndConstants", "OptiCoffeeTDD.EnumsAndConstants\OptiCoffeeTDD.EnumsAndConstants.csproj", "{15B18437-ECDF-4E3C-A008-5D94910A3A1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A03B5C3-B84A-4DA2-95C5-29D634D859D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A03B5C3-B84A-4DA2-95C5-29D634D859D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A03B5C3-B84A-4DA2-95C5-29D634D859D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A03B5C3-B84A-4DA2-95C5-29D634D859D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1FEB7C3-C89B-44D2-8AC0-5ACE94BDCD78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1FEB7C3-C89B-44D2-8AC0-5ACE94BDCD78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1FEB7C3-C89B-44D2-8AC0-5ACE94BDCD78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1FEB7C3-C89B-44D2-8AC0-5ACE94BDCD78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB65036-8B43-4BC7-B686-7E794D63F435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB65036-8B43-4BC7-B686-7E794D63F435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB65036-8B43-4BC7-B686-7E794D63F435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB65036-8B43-4BC7-B686-7E794D63F435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE19CA8-01D6-4B37-9437-7D2F4EF03988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE19CA8-01D6-4B37-9437-7D2F4EF03988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE19CA8-01D6-4B37-9437-7D2F4EF03988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE19CA8-01D6-4B37-9437-7D2F4EF03988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5B99CCC-F7F6-4DC2-97D9-D8EE2B5945C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B99CCC-F7F6-4DC2-97D9-D8EE2B5945C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B99CCC-F7F6-4DC2-97D9-D8EE2B5945C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B99CCC-F7F6-4DC2-97D9-D8EE2B5945C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B18437-ECDF-4E3C-A008-5D94910A3A1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B18437-ECDF-4E3C-A008-5D94910A3A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B18437-ECDF-4E3C-A008-5D94910A3A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B18437-ECDF-4E3C-A008-5D94910A3A1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D3030D0-64AB-41EF-9730-6CE8D68CC061}
+	EndGlobalSection
+EndGlobal
